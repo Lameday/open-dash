@@ -2,12 +2,17 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Routing } from './Routing/Routing';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const App = () => {
     return (
-        <BrowserRouter>
-            <Routing />
-        </BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
+                <Routing />
+            </BrowserRouter>
+        </QueryClientProvider>
     );
 };
 

@@ -1,3 +1,5 @@
+import { SignIn } from '../modules/SignInForm/SignInForm';
+
 export const NoAuth = () => {
-    return <div>NoAuth</div>;
+    return <SignIn />;
 };
