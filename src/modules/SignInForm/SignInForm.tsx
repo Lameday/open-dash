@@ -1,7 +1,8 @@
-import { StyledBox, StyledPaper } from './SignInForm.styles';
-import { Typography, TextField, Button } from '@mui/material';
+import { StyledBox, StyledPaper, SignInContainer, SignInButton } from './SignInForm.styles';
+import { Typography, TextField, Button, Container } from '@mui/material';
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
 export const SignIn = () => {
     interface UserForm {
@@ -10,6 +11,8 @@ export const SignIn = () => {
     }
     const [userForm, setUserForm] = useState<UserForm>({ login: '', password: '' });
     const [wrongCredentials, setWrongCredentials] = useState<boolean>(false);
+    const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     const fetchUserData = async (): Promise<UserForm> => {
         const data = await fetch('./mockUser.json').then((res) => res.json());
@@ -30,32 +33,41 @@ export const SignIn = () => {
     const signInHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         if (userData && userForm && userData?.login === userForm.login && userData?.password === userForm.password) {
-            // eslint-disable-next-line no-console
-            console.log('user logged in');
+            queryClient.setQueryData('loggedUser', userData);
+            navigate('/');
         } else {
-            // eslint-disable-next-line no-console
-            console.log('wrong login/password');
             setWrongCredentials(true);
         }
     };
 
     return (
-        <StyledBox>
-            <StyledPaper>
-                <Typography> Sign In</Typography>
-                <TextField label={'Login'} type='text' onChange={onChangeSignInHandler} value={userForm.login} />
-                <TextField
-                    label={'Password'}
-                    type='password'
-                    onChange={onChangePasswordHandler}
-                    value={userForm.password}
-                />
-                {wrongCredentials ? <Typography> Wrong Login or Password </Typography> : <Typography></Typography>}
-                <Button variant='contained' onClick={signInHandler}>
-                    {' '}
-                    LogIn
-                </Button>
-            </StyledPaper>
-        </StyledBox>
+        <SignInContainer maxWidth='xl'>
+            <StyledBox>
+                <StyledPaper>
+                    <Typography> Sign In</Typography>
+                    <TextField
+                        label='Login'
+                        type='text'
+                        onChange={onChangeSignInHandler}
+                        value={userForm.login}
+                        required
+                        margin='normal'
+                    />
+                    <TextField
+                        margin='normal'
+                        name='password'
+                        label='Password'
+                        type='password'
+                        required
+                        onChange={onChangePasswordHandler}
+                        value={userForm.password}
+                    />
+                    {wrongCredentials ? <Typography> Wrong Login or Password </Typography> : null}
+                    <SignInButton variant='contained' onClick={signInHandler}>
+                        Sign In
+                    </SignInButton>
+                </StyledPaper>
+            </StyledBox>
+        </SignInContainer>
     );
 };

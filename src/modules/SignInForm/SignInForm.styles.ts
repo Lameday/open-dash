@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
-import { Box, Paper, TextField, Button } from '@mui/material';
+import { Box, Paper, Button, Container } from '@mui/material';
 
 export const StyledBox = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    width: 100%;
-    position: absolute;
 `;
 
 export const StyledPaper = styled(Paper)`
@@ -12,10 +14,15 @@ export const StyledPaper = styled(Paper)`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
+    width: 350px;
+    height: 400px;
+`;
 
-    & * {
-        margin: 10px;
-    }
+export const SignInButton = styled(Button)`
+    min-width: 188px;
+    margin: 10px;
+`;
+
+export const SignInContainer = styled(Container)`
+    height: 100vh;
 `;
