@@ -3,7 +3,6 @@ import { OpenDashboard } from '../modules/OpenDashboard/OpenDashboard';
 import { NoAuth } from './NoAuth';
 import { Layout } from '../shared/Layout/Layout';
 import { useQueryClient } from 'react-query';
-import { useEffect } from 'react';
 
 export const Routing = () => {
     const queryClient = useQueryClient();
@@ -31,6 +30,10 @@ export const Routing = () => {
                       {
                           path: '/noauth',
                           element: <NoAuth />,
+                      },
+                      {
+                          path: '*',
+                          element: <Navigate to='/noauth' />,
                       },
                   ],
         },
