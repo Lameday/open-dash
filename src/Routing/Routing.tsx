@@ -2,6 +2,7 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import { OpenDashboard } from '../modules/OpenDashboard/OpenDashboard';
 import { NoAuth } from './NoAuth';
 import { Layout } from '../shared/Layout/Layout';
+import { ModuleOne } from '../modules/ModuleOne/ModuleOne';
 
 export const Routing = () => {
     return useRoutes([
@@ -20,6 +21,10 @@ export const Routing = () => {
                 {
                     path: '/noauth',
                     element: <NoAuth />,
+                },
+                {
+                    path: '/moduleone',
+                    element: <ModuleOne />,
                 },
             ],
         },

@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import Drawer from '../Drawer/Drawer';
 
 export const Layout = () => {
     return (
         <div>
-            <Outlet />
+            <Drawer />
         </div>
     );
 };
