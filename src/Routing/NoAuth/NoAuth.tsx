@@ -1,38 +1,49 @@
 import { StyledBox, StyledPaper, SignInContainer, SignInButton } from './NoAuth.styles';
 import { Typography, TextField } from '@mui/material';
-import { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
-import { useNavigate } from 'react-router-dom';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+
+interface UserForm {
+    login: string;
+    password: string;
+}
+
+const fetchUserData = (login: string, password: string): Promise<UserForm> => {
+    return new Promise<UserForm>((resolve, reject) => {
+        fetch('./mockUser.json')
+            .then((res) => res.json())
+            .then((data) => {
+                if (login === data.login && password === data.password) {
+                    resolve(data);
+                } else {
+                    reject('wrong login/password');
+                }
+            });
+    });
+};
 
 export const NoAuth = () => {
-    interface UserForm {
-        login: string;
-        password: string;
-    }
-    const { register, handleSubmit } = useForm<UserForm>();
-    const [wrongCredentials, setWrongCredentials] = useState<boolean>(false);
+    const { register, handleSubmit, watch } = useForm<UserForm>();
     const queryClient = useQueryClient();
-    const navigate = useNavigate();
+    const { login, password } = watch();
+    const { refetch, isError, isLoading, isSuccess, data } = useQuery(
+        'userData',
+        () => fetchUserData(login, password),
+        {
+            enabled: false,
+            refetchOnWindowFocus: false,
+            retry: false,
+        },
+    );
 
-    const fetchUserData = async (): Promise<UserForm> => {
-        const data = await fetch('./mockUser.json').then((res) => res.json());
-        return data;
-    };
-
-    const userData = useQuery('userData', fetchUserData).data;
-
-    const onSubmit: SubmitHandler<UserForm> = (data) => {
-        if (userData && data && userData?.login === data.login && userData?.password === data.password) {
-            queryClient.setQueryData('loggedUser', userData);
-            navigate('/');
-        } else {
-            setWrongCredentials(true);
-        }
-    };
+    if (isSuccess) {
+        queryClient.setQueryData('loggedUser', data);
+        return <Navigate to='/' />;
+    }
 
     const signInHandler = () => {
-        handleSubmit(onSubmit)();
+        refetch();
     };
 
     return (
@@ -42,7 +53,8 @@ export const NoAuth = () => {
                     <Typography variant='h3'> Sign In</Typography>
                     <TextField label='Login' type='text' required margin='normal' {...register('login')} />
                     <TextField label='Password' type='password' margin='normal' required {...register('password')} />
-                    {wrongCredentials ? <Typography> Wrong Login or Password </Typography> : null}
+                    {isLoading ? <Typography> Loading Circle (todo) </Typography> : null}
+                    {isError ? <Typography> Wrong Login or Password </Typography> : null}
                     <SignInButton variant='contained' onClick={handleSubmit(signInHandler)}>
                         Sign In
                     </SignInButton>
