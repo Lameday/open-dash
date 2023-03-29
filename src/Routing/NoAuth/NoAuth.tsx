@@ -1,11 +1,11 @@
-import { StyledBox, StyledPaper, SignInContainer, SignInButton } from './SignInForm.styles';
+import { StyledBox, StyledPaper, SignInContainer, SignInButton } from './NoAuth.styles';
 import { Typography, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-export const SignIn = () => {
+export const NoAuth = () => {
     interface UserForm {
         login: string;
         password: string;
