@@ -1,4 +1,11 @@
-import { StyledBox, StyledPaper, SignInContainer, SignInButton } from './NoAuth.styles';
+import {
+    StyledPaper,
+    SignInButton,
+    ObjectStyledpaper,
+    ObjectStyledContainer,
+    SignInIcon,
+    SignInErrorMessage,
+} from './NoAuth.styles';
 import { Typography, TextField } from '@mui/material';
 import { useQuery, useQueryClient } from 'react-query';
 import { Navigate } from 'react-router-dom';
@@ -47,19 +54,31 @@ export const NoAuth = () => {
     };
 
     return (
-        <SignInContainer maxWidth='xl'>
-            <StyledBox>
-                <StyledPaper>
-                    <Typography variant='h3'> Sign In</Typography>
-                    <TextField label='Login' type='text' required margin='normal' {...register('login')} />
-                    <TextField label='Password' type='password' margin='normal' required {...register('password')} />
-                    {isLoading ? <Typography> Loading Circle (todo) </Typography> : null}
-                    {isError ? <Typography> Wrong Login or Password </Typography> : null}
-                    <SignInButton variant='contained' onClick={handleSubmit(signInHandler)}>
-                        Sign In
-                    </SignInButton>
-                </StyledPaper>
-            </StyledBox>
-        </SignInContainer>
+        <ObjectStyledContainer disableGutters maxWidth='xs'>
+            <ObjectStyledpaper>
+                <SignInIcon />
+                <Typography variant='h3'> Welcome </Typography>
+                <Typography variant='h6'>Please login to continue</Typography>
+                <TextField label='Login' type='text' required margin='normal' fullWidth {...register('login')} />
+                <TextField
+                    label='Password'
+                    type='password'
+                    margin='normal'
+                    fullWidth
+                    required
+                    {...register('password')}
+                />
+                {/* {isLoading ? <Typography> Loading Circle (todo) </Typography> : null} */}
+                <SignInButton variant='contained' size='large' onClick={handleSubmit(signInHandler)}>
+                    Sign In
+                </SignInButton>
+                {isError ? (
+                    <SignInErrorMessage variant='h6' margin='normal' color='red'>
+                        {' '}
+                        AuthError: Please check your credentials{' '}
+                    </SignInErrorMessage>
+                ) : null}
+            </ObjectStyledpaper>
+        </ObjectStyledContainer>
     );
 };
