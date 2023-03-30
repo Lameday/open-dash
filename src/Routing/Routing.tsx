@@ -1,6 +1,6 @@
 import { Navigate, useRoutes } from 'react-router-dom';
-import { OpenDashboard } from '../modules/OpenDashboard/OpenDashboard';
-import { NoAuth } from './NoAuth/NoAuth';
+import { OpenDashboard } from '../domains/OpenDashboard/OpenDashboard';
+import { NoAuth } from '../domains/NoAuth/NoAuth';
 import { Layout } from '../shared/Layout/Layout';
 import { AuthCheck } from './AuthCheck';
 
