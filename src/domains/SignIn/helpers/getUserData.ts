@@ -1,7 +1,7 @@
-import { UserData, UserLoginProps } from '../model/UserData';
+import { UserData, LoginData } from '../model/UserData';
 
 //Mock data as we doesen't have an API
-export const getUserData = async ({ login, password }: UserLoginProps): Promise<UserData> => {
+export const getUserData = async ({ login, password }: LoginData): Promise<UserData> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (login === 'demo' && password === 'demo') {

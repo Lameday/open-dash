@@ -3,7 +3,7 @@ export interface UserData {
     username: string;
 }
 
-export interface UserLoginProps {
+export interface LoginData {
     login: string;
     password: string;
 }

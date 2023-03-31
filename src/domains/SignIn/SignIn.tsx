@@ -2,19 +2,15 @@ import { PageContainer, StyledLoadingButton, StyledPaper } from '../SignIn/SignI
 import { TextField, Typography } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useGetUserData } from './hooks/useGetUserData';
-
-interface UserForm {
-    login: string;
-    password: string;
-}
+import { LoginData } from './model/UserData';
 
 export const SignIn = () => {
-    const { register, handleSubmit } = useForm<UserForm>();
-    const { onSubmit, isLoading, isError } = useGetUserData();
+    const { register, handleSubmit } = useForm<LoginData>();
+    const { mutate, isLoading, isError } = useGetUserData();
 
     return (
         <PageContainer>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit((loginData) => mutate(loginData))}>
                 <StyledPaper>
                     <Typography variant='h3'> Sign In</Typography>
                     <TextField
