@@ -3,6 +3,7 @@ import { OpenDashboard } from '../domains/OpenDashboard/OpenDashboard';
 import { NoAuth } from '../domains/NoAuth/NoAuth';
 import { Layout } from '../shared/Layout/Layout';
 import { AuthCheck } from './AuthCheck';
+import { SignIn } from '../domains/SignIn/SignIn';
 
 export const Routing = () => {
     return useRoutes([
@@ -30,10 +31,9 @@ export const Routing = () => {
                 },
             ],
         },
-
         {
             path: '/sign-in',
-            element: <NoAuth />,
+            element: <SignIn />,
         },
     ]);
 };
