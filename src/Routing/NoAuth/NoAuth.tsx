@@ -1,11 +1,4 @@
-import {
-    StyledPaper,
-    SignInButton,
-    ObjectStyledpaper,
-    ObjectStyledContainer,
-    SignInIcon,
-    SignInErrorMessage,
-} from './NoAuth.styles';
+import { StyledPaper, StyledButton, StyledContainer, StyledIcon, StyledErrorMessage } from './NoAuth.styles';
 import { Typography, TextField } from '@mui/material';
 import { useQuery, useQueryClient } from 'react-query';
 import { Navigate } from 'react-router-dom';
@@ -54,9 +47,9 @@ export const NoAuth = () => {
     };
 
     return (
-        <ObjectStyledContainer disableGutters maxWidth='xs'>
-            <ObjectStyledpaper>
-                <SignInIcon />
+        <StyledContainer disableGutters maxWidth='xs'>
+            <StyledPaper>
+                <StyledIcon />
                 <Typography variant='h3'> Welcome </Typography>
                 <Typography variant='h6'>Please login to continue</Typography>
                 <TextField label='Login' type='text' required margin='normal' fullWidth {...register('login')} />
@@ -69,16 +62,15 @@ export const NoAuth = () => {
                     {...register('password')}
                 />
                 {/* {isLoading ? <Typography> Loading Circle (todo) </Typography> : null} */}
-                <SignInButton variant='contained' size='large' onClick={handleSubmit(signInHandler)}>
+                <StyledButton variant='contained' size='large' onClick={handleSubmit(signInHandler)}>
                     Sign In
-                </SignInButton>
-                {isError ? (
-                    <SignInErrorMessage variant='h6' margin='normal' color='red'>
-                        {' '}
-                        AuthError: Please check your credentials{' '}
-                    </SignInErrorMessage>
-                ) : null}
-            </ObjectStyledpaper>
-        </ObjectStyledContainer>
+                </StyledButton>
+                {isError && (
+                    <StyledErrorMessage variant='h6' margin='normal' color='red'>
+                        AuthError: Please check your credentials
+                    </StyledErrorMessage>
+                )}
+            </StyledPaper>
+        </StyledContainer>
     );
 };
