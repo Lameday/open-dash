@@ -20,7 +20,4 @@ export const theme = createTheme({
         borderRadius: 10,
     },
     typography: {},
-    components: {
-        //TODO as app grows
-    },
 });

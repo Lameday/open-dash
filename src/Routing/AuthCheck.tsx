@@ -1,11 +1,12 @@
-import { useQueryClient } from 'react-query';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useUserStore } from '../store/userStore';
 
 export const AuthCheck = () => {
-    const queryClient = useQueryClient();
-    const userData = queryClient.getQueryData('loggedUser');
+    const { userData } = useUserStore();
+
     if (!userData) {
         return <Navigate to='sign-in' />;
     }
+
     return <Outlet />;
 };
