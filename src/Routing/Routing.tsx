@@ -4,7 +4,7 @@ import { NoAuth } from '../domains/NoAuth/NoAuth';
 import { Layout } from '../shared/Layout/Layout';
 import { AuthCheck } from '../shared/auth/AuthCheck';
 import { SignIn } from '../domains/SignIn/SignIn';
-import { ModuleOne } from '../modules/ModuleOne/ModuleOne';
+import { ModuleOne } from '../domains/ModuleOne/ModuleOne';
 
 export const Routing = () => {
     return useRoutes([

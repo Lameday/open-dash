@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import Drawer from '../Drawer/Drawer';
-import NavBar from '../NavBar/NavBar';
+import Drawer from '../components/Drawer/Drawer';
+import NavBar from '../components/NavBar/NavBar';
 import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 import { theme } from '../theme/theme';
-import { ContainerMain, StyledStack, StyledRightStack } from './layoutstyles';
+import { AppContainer, MainContainer, ModuleContainer } from './Layout.styles';
 
 export const Layout = () => {
     const [isOpen, setOpen] = useState(false);
@@ -15,14 +15,14 @@ export const Layout = () => {
     };
 
     return (
-        <StyledRightStack direction='row'>
+        <AppContainer direction='row'>
             <Drawer isOpen={isOpen} smallScreen={smallScreen} toggle={handleDrawerToggle} />
-            <StyledStack>
+            <MainContainer>
                 <NavBar smallScreen={smallScreen} toggle={handleDrawerToggle} />
-                <ContainerMain>
+                <ModuleContainer>
                     <Outlet />
-                </ContainerMain>
-            </StyledStack>
-        </StyledRightStack>
+                </ModuleContainer>
+            </MainContainer>
+        </AppContainer>
     );
 };

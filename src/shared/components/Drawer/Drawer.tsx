@@ -2,7 +2,7 @@ import * as React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import HtmlIcon from '@mui/icons-material/Html';
 import DrawerMenuItem from '../DrawerMenuItem/DrawerMenuItem';
-import { StyledDrawer, DrawerHeader } from './drawer.styles';
+import { StyledDrawer, DrawerHeader } from './Drawer.styles';
 import { Typography } from '@mui/material';
 import { FC } from 'react';
 
