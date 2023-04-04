@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
 export const OpenDashboard = () => {
-    return <div>Open dashboard</div>;
+    const { t } = useTranslation();
+    return <h1>{t('dashboard.title')}</h1>;
 };

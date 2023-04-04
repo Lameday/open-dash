@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next';
+
 export const ModuleOne = () => {
-    return <div>ModuleOne</div>;
+    const { t } = useTranslation();
+    return <div>{t('moduleOne.title')}</div>;
 };
