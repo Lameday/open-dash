@@ -32,10 +32,6 @@ export const DrawerHeader = styled('div')(({ theme }) => ({
 
 export const StyledDrawer = styled(MuiDrawer)(({ theme, open }) => ({
     width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
-    color: theme.palette.primary.main,
     ...(open && {
         ...openedMixin(theme),
         '& .MuiDrawer-paper': openedMixin(theme),

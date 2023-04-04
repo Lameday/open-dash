@@ -1,13 +1,14 @@
 import { Typography } from '@mui/material';
 import { StyledNavBar } from './navBar.styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import { FC } from 'react';
 
-interface LayoutProps {
+interface NavBarProps {
     smallScreen: boolean;
     toggle: () => void;
 }
 
-const NavBar = ({ smallScreen, toggle }: LayoutProps) => {
+const NavBar: FC<NavBarProps> = ({ smallScreen, toggle }) => {
     return (
         <StyledNavBar>
             {smallScreen ? <MenuIcon onClick={toggle} /> : null}
