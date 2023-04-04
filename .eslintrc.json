@@ -29,7 +29,7 @@
         "linebreak-style": ["error", "windows"],
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
-        "no-console": "error",
+        "no-console": "warn",
         "no-multiple-empty-lines": "warn",
         "react/react-in-jsx-scope": "off",
         "react/no-array-index-key": "warn",
