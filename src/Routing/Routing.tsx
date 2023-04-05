@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from 'react-router-dom';
-import { OpenDashboard } from '../domains/OpenDashboard/OpenDashboard';
+import { Dashboard } from '../domains/Dashboard/Dashboard';
 import { NoAuth } from '../domains/NoAuth/NoAuth';
 import { Layout } from '../shared/Layout/Layout';
 import { AuthCheck } from '../shared/auth/AuthCheck';
@@ -22,7 +22,7 @@ export const Routing = () => {
                         },
                         {
                             path: '/dashboard',
-                            element: <OpenDashboard />,
+                            element: <Dashboard />,
                         },
                         {
                             path: '/noauth',
