@@ -1,42 +1,32 @@
-// import { useTranslation } from 'react-i18next';
-
-// export const OpenDashboard = () => {
-//     const { t } = useTranslation();
-//     return <h1>{t('dashboard.title')}</h1>;
-// };
-
 import { Grid } from '@mui/material';
-import { Item } from './Dashboard.styles';
+import { DashboardCard } from './DashboardCard/DashboardCard';
 
 export const Dashboard = () => {
     return (
         <Grid container rowSpacing={2}>
-            <Grid item xs={12}>
-                <Grid container spacing={1}>
-                    <Grid item xs={4}>
-                        <Item> Total Earning</Item>
+            <Grid container item xs={12} spacing={2}>
+                <Grid item xs={4}>
+                    {/*I think that DashboardCard should be used at component itself rather than here.*/}
+                    <DashboardCard>Total Earning</DashboardCard>
+                </Grid>
+                <Grid item xs={4}>
+                    <DashboardCard> Total Order</DashboardCard>
+                </Grid>
+                <Grid container item xs={4} spacing={2}>
+                    <Grid item xs={12}>
+                        <DashboardCard> Top right up</DashboardCard>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Item> Total Order</Item>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Grid>
-                            <Item> Top right up</Item>
-                        </Grid>
-                        <Grid>
-                            <Item> Top right down</Item>
-                        </Grid>
+                    <Grid item xs={12}>
+                        <DashboardCard> Top right down</DashboardCard>
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12}>
-                <Grid container spacing={2}>
-                    <Grid item xs={8}>
-                        <Item> Chart</Item>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Item>Popular Stocks</Item>
-                    </Grid>
+            <Grid container item xs={12} spacing={2}>
+                <Grid item xs={8}>
+                    <DashboardCard> Chart</DashboardCard>
+                </Grid>
+                <Grid item xs={4}>
+                    <DashboardCard>Popular Stocks</DashboardCard>
                 </Grid>
             </Grid>
         </Grid>
