@@ -2,6 +2,7 @@ import { StyledPaper } from './YearLossCard.styles';
 import { Typography } from '@mui/material';
 import { LineChart, Line, Tooltip, ResponsiveContainer } from 'recharts';
 import { data } from '../utility/data';
+import { CustomTooltip } from '../shared/CustomTooltip/CustomTooltip';
 
 export const YearLossCard = () => {
     return (
@@ -12,7 +13,7 @@ export const YearLossCard = () => {
             <ResponsiveContainer width='100%' height={35}>
                 <LineChart data={data} width={275} height={30}>
                     <Line type='monotone' dataKey='loss' stroke='white' strokeWidth={2} />
-                    <Tooltip wrapperStyle={{ backgroundColor: 'black', width: '50px', height: '50px' }} />
+                    <Tooltip content={<CustomTooltip payload={data} active={undefined} />} />
                 </LineChart>
             </ResponsiveContainer>
         </StyledPaper>

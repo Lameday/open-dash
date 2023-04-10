@@ -1,24 +1,16 @@
-import { Box, Button, Grid, Paper, Stack } from '@mui/material';
+import { Grid } from '@mui/material';
 import { StyledPaper, StyledTypography } from './TotalOrderCard.styles';
 import { data } from '../utility/data';
 import { LineChart, Line, Tooltip, ResponsiveContainer } from 'recharts';
-import { useState } from 'react';
+import { CustomTooltip } from '../shared/CustomTooltip/CustomTooltip';
+import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 
 export const TotalOrderCard = () => {
-    const [selectedTimeSpan, setSelectedTimeSpan] = useState(false);
-
     return (
         <StyledPaper elevation={0}>
             <Grid container>
-                <Grid container item>
-                    <Grid container item sx={{ justifyContent: 'flex-end' }}>
-                        <Button size='small' variant='contained' color='primary'>
-                            Month
-                        </Button>
-                        <Button size='small' variant='outlined' sx={{ color: 'white' }}>
-                            Year
-                        </Button>
-                    </Grid>
+                <Grid sx={{ justifyContent: 'flex-end' }} container item>
+                    <DensitySmallIcon sx={{ color: 'white' }} />
                 </Grid>
                 <Grid container item>
                     <StyledTypography variant='h6'> Total Order:</StyledTypography>
@@ -27,7 +19,7 @@ export const TotalOrderCard = () => {
                     <ResponsiveContainer width='100%' height={50}>
                         <LineChart data={data} width={275} height={50}>
                             <Line type='monotone' dataKey='investment' stroke='white' strokeWidth={2} />
-                            <Tooltip wrapperStyle={{ backgroundColor: 'black', width: '50px', height: '50px' }} />
+                            <Tooltip content={<CustomTooltip payload={data} active={undefined} />} />
                         </LineChart>
                     </ResponsiveContainer>
                 </Grid>

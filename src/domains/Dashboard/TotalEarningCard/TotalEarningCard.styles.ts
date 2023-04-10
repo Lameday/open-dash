@@ -5,7 +5,7 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
     boxSizing: 'border-box',
     height: '100%',
     minHeight: theme.spacing(15),
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: '#5E35B1',
     padding: theme.spacing(1),
 }));
 
