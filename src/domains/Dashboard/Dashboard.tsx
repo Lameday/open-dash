@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import { DashboardCard } from './DashboardCard/DashboardCard';
+import { Chart } from './DashboardChart/Chart';
 
 export const Dashboard = () => {
     return (
@@ -23,7 +24,7 @@ export const Dashboard = () => {
             </Grid>
             <Grid container item xs={12} spacing={2}>
                 <Grid item xs={8}>
-                    <DashboardCard> Chart</DashboardCard>
+                    <Chart />
                 </Grid>
                 <Grid item xs={4}>
                     <DashboardCard>Popular Stocks</DashboardCard>

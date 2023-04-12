@@ -1,5 +1,17 @@
 {
   "dashboard": {
-    "title": "title"
+    "title": "title",
+    "chart": {
+      "title": "Total Growth",
+      "investment": "Investment",
+      "loss": "Loss",
+      "profit": "Profit",
+      "maintenance": "Maintenance",
+      "menu": {
+        "today": "Today",
+        "thisMonth": "This Month",
+        "thisYear": "This Year"
+      }
+    }
   }
 }
