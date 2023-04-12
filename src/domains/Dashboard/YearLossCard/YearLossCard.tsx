@@ -13,7 +13,10 @@ export const YearLossCard = () => {
             <ResponsiveContainer width='100%' height={35}>
                 <LineChart data={data} width={275} height={30}>
                     <Line type='monotone' dataKey='loss' stroke='white' strokeWidth={2} />
-                    <Tooltip content={<CustomTooltip payload={data} active={undefined} />} />
+                    <Tooltip
+                        wrapperStyle={{ outline: 'none' }}
+                        content={<CustomTooltip payload={data} active={undefined} />}
+                    />
                 </LineChart>
             </ResponsiveContainer>
         </StyledPaper>

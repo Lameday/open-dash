@@ -19,7 +19,10 @@ export const TotalOrderCard = () => {
                     <ResponsiveContainer width='100%' height={50}>
                         <LineChart data={data} width={275} height={50}>
                             <Line type='monotone' dataKey='investment' stroke='white' strokeWidth={2} />
-                            <Tooltip content={<CustomTooltip payload={data} active={undefined} />} />
+                            <Tooltip
+                                wrapperStyle={{ outline: 'none' }}
+                                content={<CustomTooltip payload={data} active={undefined} />}
+                            />
                         </LineChart>
                     </ResponsiveContainer>
                 </Grid>
