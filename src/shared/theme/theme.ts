@@ -14,6 +14,10 @@ export const theme = createTheme({
             light: '#1f9678',
         },
         grey: grey,
+        dashboard: {
+            main: '#1565C0',
+            contrastText: '#fff',
+        },
     },
     spacing: 8,
     shape: {
