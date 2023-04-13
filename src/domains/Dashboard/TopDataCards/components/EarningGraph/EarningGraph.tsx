@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Line, LineChart, ResponsiveContainer, Tooltip } from 'recharts';
 import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 
@@ -9,7 +10,7 @@ interface Data {
     maintenance: number;
 }
 
-export const EarningGraph = ({ data }: { data: Data[] }) => {
+export const EarningGraph: FC<{ data: Data[] }> = ({ data }) => {
     return (
         <ResponsiveContainer width='100%' height='100%'>
             <LineChart data={data} width={275} height={50}>
