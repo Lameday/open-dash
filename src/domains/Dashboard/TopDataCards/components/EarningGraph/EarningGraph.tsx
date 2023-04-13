@@ -4,17 +4,14 @@ import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 
 interface Data {
     name: string;
-    investment: number;
-    loss: number;
-    profit: number;
-    maintenance: number;
+    order: number;
 }
 
 export const EarningGraph: FC<{ data: Data[] }> = ({ data }) => {
     return (
         <ResponsiveContainer width='100%' height='100%'>
             <LineChart data={data} width={275} height={50}>
-                <Line type='monotone' dataKey='investment' stroke='white' strokeWidth={2} />
+                <Line type='monotone' dataKey='order' stroke='white' strokeWidth={2} />
                 <Tooltip
                     wrapperStyle={{ outline: 'none' }}
                     content={<CustomTooltip payload={data} active={undefined} />}

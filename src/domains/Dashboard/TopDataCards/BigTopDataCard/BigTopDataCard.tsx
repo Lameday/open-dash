@@ -18,6 +18,7 @@ interface BigTopDataCardProps {
     middleValueDownTypography?: ReactNode;
     containerbgcolor?: string;
     outlinebgcolor?: string;
+    value?: number;
 }
 
 export const BigTopDataCard: FC<BigTopDataCardProps> = ({
@@ -28,6 +29,7 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
     middleValueDownTypography,
     containerbgcolor,
     outlinebgcolor,
+    value,
 }) => {
     return (
         <StyledPaper containerbgcolor={containerbgcolor} elevation={0}>
@@ -41,7 +43,7 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
                 <Grid container item>
                     <MiddleValuesGrid container item xs={6}>
                         <Grid item>
-                            <MiddleValueTypography variant='h4'>$todoVa</MiddleValueTypography>
+                            <MiddleValueTypography variant='h4'>${value}</MiddleValueTypography>
                         </Grid>
                         <Grid item>
                             <MiddleValueIconOutline>{middleValueIcon}</MiddleValueIconOutline>

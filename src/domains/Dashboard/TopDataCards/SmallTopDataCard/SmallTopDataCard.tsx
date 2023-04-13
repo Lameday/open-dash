@@ -1,12 +1,13 @@
 import { FC, ReactNode } from 'react';
-import { Typography, Grid, Avatar } from '@mui/material';
-import { StyledPaper, ButtonOutline, LowerText, UpperText } from './SmallTopDataCard.styles';
+import { Grid } from '@mui/material';
+import { StyledPaper, ButtonOutline, LowerText, UpperText, ButtonContainer } from './SmallTopDataCard.styles';
 
 interface SmallTopDataCardProps {
     buttonIcon?: ReactNode;
     containerbgcolor?: string;
     outlinebgcolor?: string;
     textcolor?: string;
+    value?: number;
 }
 
 export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({
@@ -14,19 +15,20 @@ export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({
     buttonIcon,
     outlinebgcolor,
     textcolor,
+    value,
 }) => {
     return (
         <StyledPaper containerbgcolor={containerbgcolor} elevation={0}>
             <Grid container>
-                <Grid item container xs={1.5}>
+                <ButtonContainer item container xs={1.5}>
                     <ButtonOutline variant='rounded' outlinebgcolor={outlinebgcolor}>
                         {buttonIcon}
                     </ButtonOutline>
-                </Grid>
+                </ButtonContainer>
                 <Grid item container xs={10}>
                     <Grid item container xs={12}>
                         <UpperText variant='body1' textcolor={textcolor}>
-                            zzz
+                            ${value}
                         </UpperText>
                     </Grid>
                     <Grid xs={12} item container>

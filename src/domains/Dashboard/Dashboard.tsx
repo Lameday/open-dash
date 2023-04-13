@@ -5,18 +5,18 @@ import { DashBoardDataProvider } from './DashboardDataContext/DashboardDataConte
 
 export const Dashboard = () => {
     return (
-        <DashBoardDataProvider>
-            <Grid container rowSpacing={2}>
+        <Grid container rowSpacing={2}>
+            <DashBoardDataProvider orderArray={[]} orderTotal={0} earningTotal={0} incomeTotal={0}>
                 <TopDataCards />
-                <Grid container item xs={12} spacing={2}>
-                    <Grid item xs={8}>
-                        <DashboardCard> Chart</DashboardCard>
-                    </Grid>
-                    <Grid item xs={4}>
-                        <DashboardCard>Popular Stocks</DashboardCard>
-                    </Grid>
+            </DashBoardDataProvider>
+            <Grid container item xs={12} spacing={2}>
+                <Grid item xs={8}>
+                    <DashboardCard> Chart</DashboardCard>
+                </Grid>
+                <Grid item xs={4}>
+                    <DashboardCard>Popular Stocks</DashboardCard>
                 </Grid>
             </Grid>
-        </DashBoardDataProvider>
+        </Grid>
     );
 };

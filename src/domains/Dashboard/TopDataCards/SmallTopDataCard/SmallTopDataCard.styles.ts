@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Avatar, Paper, Typography } from '@mui/material';
+import { Avatar, Grid, Paper, Typography } from '@mui/material';
 
 interface StyledPaperProps {
     containerbgcolor?: string;
@@ -29,8 +29,13 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
     color: 'white',
 }));
 
+export const ButtonContainer = styled(Grid)(() => ({
+    alignContent: 'center',
+}));
+
 export const ButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlinebgcolor }) => ({
     backgroundColor: outlinebgcolor,
+    cursor: 'pointer',
 }));
 
 export const UpperText = styled(Typography)<TextProps>(({ textcolor }) => ({

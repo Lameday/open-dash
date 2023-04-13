@@ -10,13 +10,14 @@ import { MiddleValueIcon, MiddleValueDownTypography } from './TopDataCards.style
 import { EarningButton } from './components/EarningButton/EarningButton';
 
 export const TopDataCards = () => {
-    const data = useContext(DashBoardDataContext);
+    const { orderArray, orderTotal, earningTotal, incomeTotal } = useContext(DashBoardDataContext);
     return (
         <Grid container item xs={12} spacing={2}>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
                     leftTopButton={<AutoAwesomeMotion />}
                     rightTopButton={<EarningButton />}
+                    value={earningTotal}
                     middleValueIcon={<MiddleValueIcon rotate='30' iconcolor='#5E35B1' />}
                     middleValueDownTypography={
                         <MiddleValueDownTypography color='#b39ddb' variant='body1'>
@@ -29,9 +30,10 @@ export const TopDataCards = () => {
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
-                    graph={<EarningGraph data={data} />}
+                    graph={<EarningGraph data={orderArray} />}
                     leftTopButton={<AutoAwesomeMotion />}
                     rightTopButton={<OrderButtons />}
+                    value={orderTotal}
                     middleValueIcon={<MiddleValueIcon rotate='210' iconcolor='#1E88E5' />}
                     middleValueDownTypography={
                         <MiddleValueDownTypography color='#90CAF9' variant='body1'>
@@ -49,6 +51,7 @@ export const TopDataCards = () => {
                         buttonIcon={<TableChart />}
                         outlinebgcolor='#1565C0'
                         textcolor='white'
+                        value={incomeTotal}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} lg={12}>
@@ -57,6 +60,7 @@ export const TopDataCards = () => {
                         buttonIcon={<Storefront />}
                         outlinebgcolor='#FFC107'
                         textcolor='black'
+                        value={incomeTotal}
                     />
                 </Grid>
             </Grid>

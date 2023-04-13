@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Paper, Typography, Grid, Avatar, Box } from '@mui/material';
+import { Paper, Typography, Grid, Avatar } from '@mui/material';
 
 type StyledPaperProps = {
     containerbgcolor?: string;
@@ -25,10 +25,6 @@ export const TopLeftButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlin
     marginTop: '8px',
     backgroundColor: outlinebgcolor,
 }));
-
-// export const TopRightButtonOutline = styled(Box)<ButtonOutlineProps>(({ outlinebgcolor }) => ({
-//     backgroundColor: outlinebgcolor,
-// }));
 
 export const MiddleValuesGrid = styled(Grid)(() => ({
     alignItems: 'center',

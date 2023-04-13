@@ -5,7 +5,7 @@ export const CustomTooltipPaper = styled(Paper)(() => ({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: 'black',
-    width: '90px',
+    width: '150px',
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
