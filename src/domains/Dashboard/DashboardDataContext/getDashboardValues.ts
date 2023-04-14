@@ -12,8 +12,9 @@ interface Data {
 
 export const getDashboardValues = (data: Data[]) => {
     const orderArray = data.map(({ name, order }) => ({ name, order }));
+    const placeHolderArray = data.map(({ name, profit }) => ({ name, profit }));
     const orderTotal = data.reduce((acc, { order }) => acc + order, 0);
     const earningTotal = data.reduce((acc, { profit }) => acc + profit, 0);
     const incomeTotal = data.reduce((acc, item) => acc + item.profit + item.order, 0);
-    return { orderArray, orderTotal, earningTotal, incomeTotal };
+    return { orderArray, orderTotal, earningTotal, incomeTotal, placeHolderArray };
 };

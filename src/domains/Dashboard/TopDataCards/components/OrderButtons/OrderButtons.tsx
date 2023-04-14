@@ -1,14 +1,22 @@
-import { Button, Grid } from '@mui/material';
+import { Grid, ToggleButton } from '@mui/material';
+import { MouseEvent, FC } from 'react';
+import { OrderButtonGroup } from './OrderButtons.style';
 
-export const OrderButtons = () => {
+interface OrderButtonsProps {
+    dataType: string;
+    setDataType: (value: string) => void;
+}
+
+export const OrderButtons: FC<OrderButtonsProps> = ({ dataType, setDataType }) => {
+    const handleChange = (event: MouseEvent<HTMLElement>, newDataType: string) => {
+        setDataType(newDataType);
+    };
     return (
         <Grid>
-            <Button variant='contained' size='small' disableElevation={true} color='dashboard'>
-                Month
-            </Button>
-            <Button variant='contained' size='small' disableElevation={true} color='dashboard'>
-                Year
-            </Button>
+            <OrderButtonGroup value={dataType} exclusive onChange={handleChange}>
+                <ToggleButton value='month'>Month</ToggleButton>
+                <ToggleButton value='year'>Year</ToggleButton>
+            </OrderButtonGroup>
         </Grid>
     );
 };

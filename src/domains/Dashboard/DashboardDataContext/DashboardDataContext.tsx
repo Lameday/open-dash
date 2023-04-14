@@ -20,12 +20,17 @@ interface OrderArray {
     name: string;
     order: number;
 }
+interface PlaceHolderArray {
+    name: string;
+    profit: number;
+}
 interface DashboardProviderProps {
     children?: ReactNode;
     orderArray: OrderArray[];
     orderTotal: number;
     earningTotal: number;
     incomeTotal: number;
+    placeHolderArray: PlaceHolderArray[];
 }
 
 export const DashBoardDataContext = createContext<DashboardProviderProps>({
@@ -33,6 +38,7 @@ export const DashBoardDataContext = createContext<DashboardProviderProps>({
     orderTotal: 0,
     earningTotal: 0,
     incomeTotal: 0,
+    placeHolderArray: [],
 });
 
 export const DashBoardDataProvider: FC<DashboardProviderProps> = ({ children }) => {

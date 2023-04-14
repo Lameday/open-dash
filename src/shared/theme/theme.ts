@@ -17,6 +17,7 @@ export const theme = createTheme({
         dashboard: {
             main: '#1565C0',
             contrastText: '#fff',
+            light: '#1E88E5',
         },
     },
     spacing: 8,

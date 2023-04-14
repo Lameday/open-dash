@@ -5,17 +5,19 @@ import { EarningGraph } from './components/EarningGraph/EarningGraph';
 import { OrderButtons } from './components/OrderButtons/OrderButtons';
 import { useContext } from 'react';
 import { DashBoardDataContext } from '../DashboardDataContext/DashboardDataContext';
-import { AutoAwesomeMotion, TableChart, Storefront } from '@mui/icons-material';
+import { TableChart, Storefront, Redeem, LocalAtm } from '@mui/icons-material';
 import { MiddleValueIcon, MiddleValueDownTypography } from './TopDataCards.styles';
 import { EarningButton } from './components/EarningButton/EarningButton';
+import { useState } from 'react';
 
 export const TopDataCards = () => {
-    const { orderArray, orderTotal, earningTotal, incomeTotal } = useContext(DashBoardDataContext);
+    const { orderArray, orderTotal, earningTotal, incomeTotal, placeHolderArray } = useContext(DashBoardDataContext);
+    const [dataType, setDataType] = useState('month');
     return (
         <Grid container item xs={12} spacing={2}>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
-                    leftTopButton={<AutoAwesomeMotion />}
+                    leftTopButton={<LocalAtm />}
                     rightTopButton={<EarningButton />}
                     value={earningTotal}
                     middleValueIcon={<MiddleValueIcon rotate='30' iconcolor='#5E35B1' />}
@@ -30,9 +32,11 @@ export const TopDataCards = () => {
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
-                    graph={<EarningGraph data={orderArray} />}
-                    leftTopButton={<AutoAwesomeMotion />}
-                    rightTopButton={<OrderButtons />}
+                    graph={
+                        <EarningGraph orderArray={orderArray} placeHolderArray={placeHolderArray} dataType={dataType} />
+                    }
+                    leftTopButton={<Redeem />}
+                    rightTopButton={<OrderButtons dataType={dataType} setDataType={setDataType} />}
                     value={orderTotal}
                     middleValueIcon={<MiddleValueIcon rotate='210' iconcolor='#1E88E5' />}
                     middleValueDownTypography={

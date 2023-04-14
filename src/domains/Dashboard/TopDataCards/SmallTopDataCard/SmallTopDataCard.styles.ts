@@ -29,8 +29,12 @@ export const StyledTypography = styled(Typography)(({ theme }) => ({
     color: 'white',
 }));
 
-export const ButtonContainer = styled(Grid)(() => ({
-    alignContent: 'center',
+export const ContentContainer = styled(Grid)(() => ({
+    alignItems: 'center',
+}));
+
+export const ButtonContainer = styled(Grid)(({ theme }) => ({
+    marginRight: theme.spacing(1),
 }));
 
 export const ButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlinebgcolor }) => ({

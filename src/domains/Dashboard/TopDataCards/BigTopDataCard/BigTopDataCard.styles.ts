@@ -21,27 +21,26 @@ export const TopCardGrid = styled(Grid)(() => ({
     justifyContent: 'space-between',
 }));
 
-export const TopLeftButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlinebgcolor }) => ({
-    marginTop: '8px',
+export const TopLeftButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlinebgcolor, theme }) => ({
+    marginTop: theme.spacing(1),
     backgroundColor: outlinebgcolor,
 }));
 
-export const MiddleValuesGrid = styled(Grid)(() => ({
+export const MiddleValuesGrid = styled(Grid)(({ theme }) => ({
     alignItems: 'center',
-    marginTop: '14px',
+    marginTop: theme.spacing(1.75),
 }));
 
-export const MiddleValueTypography = styled(Typography)(() => ({
+export const MiddleValueTypography = styled(Typography)(({ theme }) => ({
     fontWeight: 'bold',
-    marginRight: '4px',
+    marginRight: theme.spacing(0.5),
     color: 'white',
 }));
 
-export const MiddleValueIconOutline = styled(Avatar)(() => ({
-    width: 24,
-    height: 24,
+export const MiddleValueIconOutline = styled(Avatar)(({ theme }) => ({
+    width: theme.spacing(2.7),
+    height: theme.spacing(2.7),
     backgroundColor: '#9999CC',
-    color: '#5E35B1',
 }));
 
 export const MiddleValueDownTypography = styled(Typography)(() => ({
@@ -52,3 +51,4 @@ export const MiddleValueDownTypography = styled(Typography)(() => ({
 export const MiddleGraphContainer = styled(Grid)(() => ({
     alignItems: 'center',
 }));
+

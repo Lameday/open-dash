@@ -10,11 +10,11 @@ interface IconProps {
     iconcolor?: string;
 }
 
-export const MiddleValueIcon = styled(ArrowUpward)<IconProps>(({ rotate, iconcolor }) => ({
+export const MiddleValueIcon = styled(ArrowUpward)<IconProps>(({ rotate, iconcolor, theme }) => ({
     color: iconcolor,
     transform: `rotate(${rotate}deg)`,
-    width: 18,
-    height: 18,
+    width: theme.spacing(2),
+    height: theme.spacing(2),
 }));
 
 export const MiddleValueDownTypography = styled(Typography)<TypographyProps>(({ color }) => ({
