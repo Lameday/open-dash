@@ -6,26 +6,17 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTranslation } from 'react-i18next';
 import { ChartHeader } from './Chart.styles';
-
-const data = [
-    { name: 'Jan', investment: 35, loss: 35, profit: 35, maintenance: 0 },
-    { name: 'Feb', investment: 125, loss: 15, profit: 145, maintenance: 0 },
-    { name: 'Mar', investment: 35, loss: 15, profit: 35, maintenance: 75 },
-    { name: 'Apr', investment: 35, loss: 35, profit: 35, maintenance: 0 },
-    { name: 'May', investment: 35, loss: 65, profit: 20, maintenance: 0 },
-    { name: 'Jun', investment: 80, loss: 40, profit: 105, maintenance: 115 },
-    { name: 'Jul', investment: 35, loss: 80, profit: 100, maintenance: 0 },
-    { name: 'Aug', investment: 20, loss: 25, profit: 10, maintenance: 0 },
-    { name: 'Sep', investment: 35, loss: 15, profit: 65, maintenance: 0 },
-    { name: 'Oct', investment: 45, loss: 85, profit: 45, maintenance: 0 },
-    { name: 'Nov', investment: 15, loss: 25, profit: 30, maintenance: 150 },
-    { name: 'Dec', investment: 75, loss: 75, profit: 10, maintenance: 0 },
-];
+import { getChartData } from './helpers/getChartData';
+import { useQuery } from '@tanstack/react-query';
 
 export const Chart = () => {
     const { t } = useTranslation();
+    const [timeFrame, setTimeFrame] = useState('thisYear');
 
-    const [timeFrame, setTimeFrame] = useState('30');
+    const { data } = useQuery({
+        queryKey: [`dashboardChart-${timeFrame}`],
+        queryFn: () => getChartData(timeFrame),
+    });
 
     const handleTimeFrameChange = (event: SelectChangeEvent) => {
         setTimeFrame(event.target.value as string);
@@ -49,15 +40,14 @@ export const Chart = () => {
                 </Stack>
                 <Stack alignItems='flex-end'>
                     <Select value={timeFrame} onChange={handleTimeFrameChange}>
-                        <MenuItem value={'10'}>{t('dashboard.chart.menu.today')}</MenuItem>
-                        <MenuItem value={'20'}>{t('dashboard.chart.menu.thisMonth')}</MenuItem>
-                        <MenuItem value={'30'}>{t('dashboard.chart.menu.thisYear')}</MenuItem>
+                        <MenuItem value={'today'}>{t('dashboard.chart.menu.today')}</MenuItem>
+                        <MenuItem value={'thisMonth'}>{t('dashboard.chart.menu.thisMonth')}</MenuItem>
+                        <MenuItem value={'thisYear'}>{t('dashboard.chart.menu.thisYear')}</MenuItem>
                     </Select>
                     <IconButton onClick={handleClick}>
                         <MenuIcon fontSize='small' />
                     </IconButton>
                     <Menu
-                        id='basic-menu'
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}
@@ -74,7 +64,7 @@ export const Chart = () => {
                 <BarChart data={data}>
                     <CartesianGrid vertical={false} stroke={theme.palette.grey[200]} />
                     <XAxis dataKey='name' tickLine={false} />
-                    <YAxis axisLine={false} tickLine={false} domain={[0, 360]} />
+                    <YAxis axisLine={false} tickLine={false} />
                     <Tooltip cursor={{ fill: 'transparent' }} wrapperStyle={{ outline: 'none' }} />
                     <Legend iconType='square' />
                     <Bar
