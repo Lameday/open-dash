@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDashboardValues } from '../DashboardDataContext/getDashboardValues';
+import { getDashboardValues } from './getDashboardValues';
 
 interface OrderArray {
     name: string;
@@ -39,7 +39,13 @@ export const useDashboardValues = () => {
         queryKey: ['dashboardData'],
         queryFn: fetchDashboardData,
     });
-    let dashboardValues: DashboardValuesProps | null = null;
+    let dashboardValues: DashboardValuesProps = {
+        orderArray: [],
+        orderTotal: 0,
+        earningTotal: 0,
+        incomeTotal: 0,
+        placeHolderArray: [],
+    };
     if (isSuccess) {
         dashboardValues = getDashboardValues(data);
     }
