@@ -3,23 +3,22 @@ import { BigTopDataCard } from './BigTopDataCard/BigTopDataCard';
 import { SmallTopDataCard } from './SmallTopDataCard/SmallTopDataCard';
 import { EarningGraph } from './components/EarningGraph/EarningGraph';
 import { OrderButtons } from './components/OrderButtons/OrderButtons';
-import { useContext } from 'react';
-import { DashBoardDataContext } from '../DashboardDataContext/DashboardDataContext';
 import { TableChart, Storefront, Redeem, LocalAtm } from '@mui/icons-material';
 import { MiddleValueIcon, MiddleValueDownTypography } from './TopDataCards.styles';
 import { EarningButton } from './components/EarningButton/EarningButton';
 import { useState } from 'react';
-
+import { useDashboardValues } from './useDashboardValues';
 export const TopDataCards = () => {
-    const { orderArray, orderTotal, earningTotal, incomeTotal, placeHolderArray } = useContext(DashBoardDataContext);
     const [dataType, setDataType] = useState('month');
+    const { dashboardValues, isError, isLoading } = useDashboardValues();
+
     return (
         <Grid container item xs={12} spacing={2}>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
                     leftTopButton={<LocalAtm />}
                     rightTopButton={<EarningButton />}
-                    value={earningTotal}
+                    value={dashboardValues.earningTotal}
                     middleValueIcon={<MiddleValueIcon rotate='30' iconcolor='#5E35B1' />}
                     middleValueDownTypography={
                         <MiddleValueDownTypography color='#b39ddb' variant='body1'>
@@ -33,11 +32,15 @@ export const TopDataCards = () => {
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
                     graph={
-                        <EarningGraph orderArray={orderArray} placeHolderArray={placeHolderArray} dataType={dataType} />
+                        <EarningGraph
+                            orderArray={dashboardValues.orderArray}
+                            placeHolderArray={dashboardValues.placeHolderArray}
+                            dataType={dataType}
+                        />
                     }
                     leftTopButton={<Redeem />}
                     rightTopButton={<OrderButtons dataType={dataType} setDataType={setDataType} />}
-                    value={orderTotal}
+                    value={dashboardValues.orderTotal}
                     middleValueIcon={<MiddleValueIcon rotate='210' iconcolor='#1E88E5' />}
                     middleValueDownTypography={
                         <MiddleValueDownTypography color='#90CAF9' variant='body1'>
@@ -55,7 +58,7 @@ export const TopDataCards = () => {
                         buttonIcon={<TableChart />}
                         outlinebgcolor='#1565C0'
                         textcolor='white'
-                        value={incomeTotal}
+                        value={dashboardValues.incomeTotal}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} lg={12}>
@@ -64,7 +67,7 @@ export const TopDataCards = () => {
                         buttonIcon={<Storefront />}
                         outlinebgcolor='#FFC107'
                         textcolor='black'
-                        value={incomeTotal}
+                        value={dashboardValues.incomeTotal}
                     />
                 </Grid>
             </Grid>
