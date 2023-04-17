@@ -9,16 +9,11 @@ export const theme = createTheme({
             light: '#4b9c2c',
         },
         secondary: {
-            dark: '#074d35',
+            dark: '#5E35B1',
             main: '#1E88E5',
             light: '#1f9678',
         },
         grey: grey,
-        dashboard: {
-            main: '#1565C0',
-            contrastText: '#fff',
-            light: '#1E88E5',
-        },
     },
     spacing: 8,
     shape: {

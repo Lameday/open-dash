@@ -1,11 +1,7 @@
 import { Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-type ButtonOutlineProps = {
-    outlinebgcolor?: string;
-};
-
-export const TopRightButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlinebgcolor }) => ({
+export const TopRightButtonOutline = styled(Avatar)(() => ({
     cursor: 'pointer',
-    backgroundColor: outlinebgcolor,
+    backgroundColor: 'rgba(0,0,0,0.24)',
 }));

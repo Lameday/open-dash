@@ -1,15 +1,12 @@
 import { styled } from '@mui/material/styles';
-import { Paper, Typography, Grid, Avatar } from '@mui/material';
+import { Typography, Grid, Avatar } from '@mui/material';
+import { DashboardCardPaper } from '../../../DashboardCard/DashboardCardPaper.styles';
 
 type StyledPaperProps = {
     containerbgcolor?: string;
 };
 
-type ButtonOutlineProps = {
-    outlinebgcolor?: string;
-};
-
-export const StyledPaper = styled(Paper)<StyledPaperProps>(({ containerbgcolor, theme }) => ({
+export const StyledPaper = styled(DashboardCardPaper)<StyledPaperProps>(({ containerbgcolor, theme }) => ({
     boxSizing: 'border-box',
     height: '100%',
     minHeight: theme.spacing(15),
@@ -21,9 +18,9 @@ export const TopCardGrid = styled(Grid)(() => ({
     justifyContent: 'space-between',
 }));
 
-export const TopLeftButtonOutline = styled(Avatar)<ButtonOutlineProps>(({ outlinebgcolor, theme }) => ({
+export const TopLeftButtonOutline = styled(Avatar)(({ theme }) => ({
     marginTop: theme.spacing(1),
-    backgroundColor: outlinebgcolor,
+    backgroundColor: 'rgba(0,0,0,0.24)',
 }));
 
 export const MiddleValuesGrid = styled(Grid)(({ theme }) => ({
@@ -40,15 +37,14 @@ export const MiddleValueTypography = styled(Typography)(({ theme }) => ({
 export const MiddleValueIconOutline = styled(Avatar)(({ theme }) => ({
     width: theme.spacing(2.7),
     height: theme.spacing(2.7),
-    backgroundColor: '#9999CC',
+    backgroundColor: 'rgba(255,255,255,0.65)',
 }));
 
 export const MiddleValueDownTypography = styled(Typography)(() => ({
     fontWeight: 'bold',
-    color: '#b39ddb',
+    color: 'rgba(255,255,255,0.6)',
 }));
 
 export const MiddleGraphContainer = styled(Grid)(() => ({
     alignItems: 'center',
 }));
-

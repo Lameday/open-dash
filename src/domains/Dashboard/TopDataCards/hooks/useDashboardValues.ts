@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDashboardValues } from './getDashboardValues';
+import { getDashboardValues } from '../helpers/getDashboardValues';
 
 interface OrderArray {
     name: string;

@@ -8,7 +8,9 @@ import {
     MiddleValueTypography,
     MiddleValueIconOutline,
     MiddleGraphContainer,
+    MiddleValueDownTypography,
 } from './BigTopDataCard.styles';
+import { getCardColor } from './helpers/getCardColor';
 
 interface BigTopDataCardProps {
     graph?: ReactNode;
@@ -19,6 +21,7 @@ interface BigTopDataCardProps {
     containerbgcolor?: string;
     outlinebgcolor?: string;
     value?: number;
+    cardType?: string;
 }
 
 export const BigTopDataCard: FC<BigTopDataCardProps> = ({
@@ -26,18 +29,16 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
     leftTopButton,
     rightTopButton,
     middleValueIcon,
-    middleValueDownTypography,
-    containerbgcolor,
-    outlinebgcolor,
     value,
+    cardType,
 }) => {
+    const cardColor = getCardColor(cardType);
+
     return (
-        <StyledPaper containerbgcolor={containerbgcolor} elevation={0}>
+        <StyledPaper containerbgcolor={cardColor} elevation={0}>
             <Grid container>
                 <TopCardGrid container item>
-                    <TopLeftButtonOutline outlinebgcolor={outlinebgcolor} variant='rounded'>
-                        {leftTopButton}
-                    </TopLeftButtonOutline>
+                    <TopLeftButtonOutline variant='rounded'>{leftTopButton}</TopLeftButtonOutline>
                     {rightTopButton}
                 </TopCardGrid>
                 <Grid container item>
@@ -49,7 +50,7 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
                             <MiddleValueIconOutline>{middleValueIcon}</MiddleValueIconOutline>
                         </Grid>
                         <Grid container item>
-                            {middleValueDownTypography}
+                            <MiddleValueDownTypography variant='body1'>Total {cardType}</MiddleValueDownTypography>
                         </Grid>
                     </MiddleValuesGrid>
                     <MiddleGraphContainer container item xs={6}>
