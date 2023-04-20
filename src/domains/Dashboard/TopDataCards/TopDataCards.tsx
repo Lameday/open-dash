@@ -16,8 +16,8 @@ export enum CardType {
 }
 
 export enum DataType {
-    Month = 'month',
-    Year = 'year',
+    Month = 'Month',
+    Year = 'Year',
 }
 
 enum FetchError {
@@ -26,7 +26,7 @@ enum FetchError {
 
 export const TopDataCards = () => {
     const [dataType, setDataType] = useState(DataType.Month);
-    const { dashboardValues, isLoading, isError, isSuccess } = useDashboardValues();
+    const { dashboardValues, isLoading, isError, isSuccess } = useDashboardValues(dataType);
     const theme = useTheme();
 
     return (
@@ -54,11 +54,7 @@ export const TopDataCards = () => {
                 <BigTopDataCard
                     graph={
                         isSuccess ? (
-                            <EarningGraph
-                                orderArray={dashboardValues.orderArray}
-                                placeHolderArray={dashboardValues.placeHolderArray}
-                                dataType={dataType}
-                            />
+                            <EarningGraph array={dashboardValues.orderArray} dataType={dataType} />
                         ) : isLoading ? null : isError ? null : null
                     }
                     leftTopButton={<Redeem />}
