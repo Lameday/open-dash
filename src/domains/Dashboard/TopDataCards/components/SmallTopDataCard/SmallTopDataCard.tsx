@@ -11,24 +11,17 @@ import {
 
 interface SmallTopDataCardProps {
     buttonIcon?: ReactNode;
-    containerbgcolor?: string;
-    outlinebgcolor?: string;
     textcolor?: string;
     value?: number;
+    cardType?: string;
 }
 
-export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({
-    containerbgcolor,
-    buttonIcon,
-    outlinebgcolor,
-    textcolor,
-    value,
-}) => {
+export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({ buttonIcon, textcolor, value, cardType }) => {
     return (
-        <StyledPaper containerbgcolor={containerbgcolor} elevation={0}>
+        <StyledPaper cardType={cardType} elevation={0}>
             <ContentContainer container>
                 <ButtonContainer item>
-                    <ButtonOutline variant='rounded' outlinebgcolor={outlinebgcolor}>
+                    <ButtonOutline variant='rounded' cardType={cardType}>
                         {buttonIcon}
                     </ButtonOutline>
                 </ButtonContainer>

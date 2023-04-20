@@ -2,11 +2,11 @@ import { styled } from '@mui/material/styles';
 import { ArrowUpward } from '@mui/icons-material';
 
 interface IconProps {
-    iconcolor?: string;
+    iconColor?: string;
 }
 
-export const MiddleValueIcon = styled(ArrowUpward)<IconProps>(({ rotate, iconcolor, theme }) => ({
-    color: iconcolor,
+export const MiddleValueIcon = styled(ArrowUpward)<IconProps>(({ rotate, iconColor, theme }) => ({
+    color: iconColor,
     transform: `rotate(${rotate}deg)`,
     width: theme.spacing(2),
     height: theme.spacing(2),

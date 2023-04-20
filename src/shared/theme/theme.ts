@@ -4,14 +4,14 @@ import { grey } from '@mui/material/colors';
 export const theme = createTheme({
     palette: {
         primary: {
-            dark: '#1c5b02',
+            dark: '#1b5b02',
             main: '#337917',
-            light: '#4b9c2c',
+            light: '#6db754',
         },
         secondary: {
-            dark: '#5E35B1',
-            main: '#1E88E5',
-            light: '#1f9678',
+            dark: '#074d35',
+            main: '#17795d',
+            light: '#35a68a',
         },
         grey: grey,
     },

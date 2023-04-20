@@ -2,15 +2,20 @@ import { styled } from '@mui/material/styles';
 import { Typography, Grid, Avatar } from '@mui/material';
 import { DashboardCardPaper } from '../../../DashboardCard/DashboardCardPaper.styles';
 
-type StyledPaperProps = {
-    containerbgcolor?: string;
+type StyledProps = {
+    cardType?: string;
 };
 
-export const StyledPaper = styled(DashboardCardPaper)<StyledPaperProps>(({ containerbgcolor, theme }) => ({
+export const StyledPaper = styled(DashboardCardPaper)<StyledProps>(({ theme, cardType }) => ({
     boxSizing: 'border-box',
     height: '100%',
     minHeight: theme.spacing(15),
-    backgroundColor: containerbgcolor,
+    backgroundColor:
+        cardType === 'Order'
+            ? theme.palette.primary.main
+            : cardType === 'Earning'
+            ? theme.palette.secondary.main
+            : theme.palette.common.black,
     padding: theme.spacing(1.5),
 }));
 
@@ -18,9 +23,14 @@ export const TopCardGrid = styled(Grid)(() => ({
     justifyContent: 'space-between',
 }));
 
-export const TopLeftButtonOutline = styled(Avatar)(({ theme }) => ({
+export const TopLeftButtonOutline = styled(Avatar)<StyledProps>(({ theme, cardType }) => ({
     marginTop: theme.spacing(1),
-    backgroundColor: 'rgba(0,0,0,0.24)',
+    backgroundColor:
+        cardType === 'Order'
+            ? theme.palette.primary.dark
+            : cardType === 'Earning'
+            ? theme.palette.secondary.dark
+            : theme.palette.common.black,
 }));
 
 export const MiddleValuesGrid = styled(Grid)(({ theme }) => ({
@@ -31,7 +41,7 @@ export const MiddleValuesGrid = styled(Grid)(({ theme }) => ({
 export const MiddleValueTypography = styled(Typography)(({ theme }) => ({
     fontWeight: 'bold',
     marginRight: theme.spacing(0.5),
-    color: 'white',
+    color: theme.palette.common.white,
 }));
 
 export const MiddleValueIconOutline = styled(Avatar)(({ theme }) => ({
@@ -40,9 +50,14 @@ export const MiddleValueIconOutline = styled(Avatar)(({ theme }) => ({
     backgroundColor: 'rgba(255,255,255,0.65)',
 }));
 
-export const MiddleValueDownTypography = styled(Typography)(() => ({
+export const MiddleValueDownTypography = styled(Typography)<StyledProps>(({ theme, cardType }) => ({
     fontWeight: 'bold',
-    color: 'rgba(255,255,255,0.6)',
+    color:
+        cardType === 'Order'
+            ? theme.palette.primary.light
+            : cardType === 'Earning'
+            ? theme.palette.secondary.light
+            : theme.palette.common.black,
 }));
 
 export const MiddleGraphContainer = styled(Grid)(() => ({

@@ -25,6 +25,7 @@ export const EarningGraph: FC<{ orderArray: OrderArray[]; placeHolderArray: Plac
     dataType,
 }) => {
     const data = getValueToGraph(dataType, orderArray, placeHolderArray);
+
     return (
         <ResponsiveContainer width='100%' height='100%'>
             <LineChart data={data?.array} width={275} height={50}>

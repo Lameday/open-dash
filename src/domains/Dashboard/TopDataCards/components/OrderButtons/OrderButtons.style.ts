@@ -1,19 +1,23 @@
 import { ToggleButtonGroup } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-export const OrderButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
+type StyledProps = {
+    cardType?: string;
+};
+
+export const OrderButtonGroup = styled(ToggleButtonGroup)<StyledProps>(({ theme }) => ({
     backgroundColor: 'inherit',
     '& .MuiToggleButton-root': {
         padding: theme.spacing(0.15, 1),
-        borderRadius: 0,
+        borderRadius: theme.spacing(0.875),
         border: 'none',
-        color: 'white',
+        color: theme.palette.common.white,
         fontWeight: 'bold',
         textTransform: 'none',
         fontSize: theme.spacing(1.7),
         '&.Mui-selected': {
-            backgroundColor: 'rgba(0,0,0,0.24)',
-            color: 'white',
+            backgroundColor: theme.palette.primary.dark,
+            color: theme.palette.common.white,
             '& :hover': {
                 color: 'inherit',
             },

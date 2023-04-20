@@ -10,18 +10,15 @@ import {
     MiddleGraphContainer,
     MiddleValueDownTypography,
 } from './BigTopDataCard.styles';
-import { getCardColor } from './helpers/getCardColor';
+import { CardType } from '../../TopDataCards';
 
 interface BigTopDataCardProps {
     graph?: ReactNode;
     leftTopButton?: ReactNode;
     rightTopButton?: ReactNode;
     middleValueIcon?: ReactNode;
-    middleValueDownTypography?: ReactNode;
-    containerbgcolor?: string;
-    outlinebgcolor?: string;
-    value?: number;
-    cardType?: string;
+    value?: number | string;
+    cardType?: CardType;
 }
 
 export const BigTopDataCard: FC<BigTopDataCardProps> = ({
@@ -32,13 +29,13 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
     value,
     cardType,
 }) => {
-    const cardColor = getCardColor(cardType);
-
     return (
-        <StyledPaper containerbgcolor={cardColor} elevation={0}>
+        <StyledPaper cardType={cardType} elevation={0}>
             <Grid container>
                 <TopCardGrid container item>
-                    <TopLeftButtonOutline variant='rounded'>{leftTopButton}</TopLeftButtonOutline>
+                    <TopLeftButtonOutline variant='rounded' cardType={cardType}>
+                        {leftTopButton}
+                    </TopLeftButtonOutline>
                     {rightTopButton}
                 </TopCardGrid>
                 <Grid container item>
@@ -50,7 +47,9 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
                             <MiddleValueIconOutline>{middleValueIcon}</MiddleValueIconOutline>
                         </Grid>
                         <Grid container item>
-                            <MiddleValueDownTypography variant='body1'>Total {cardType}</MiddleValueDownTypography>
+                            <MiddleValueDownTypography variant='body1' cardType={cardType}>
+                                Total {cardType}
+                            </MiddleValueDownTypography>
                         </Grid>
                     </MiddleValuesGrid>
                     <MiddleGraphContainer container item xs={6}>
