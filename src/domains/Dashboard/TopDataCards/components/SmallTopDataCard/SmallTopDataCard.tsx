@@ -12,7 +12,7 @@ import {
 interface SmallTopDataCardProps {
     buttonIcon?: ReactNode;
     textcolor?: string;
-    value?: number;
+    value?: number | string | ReactNode;
     cardType?: string;
 }
 

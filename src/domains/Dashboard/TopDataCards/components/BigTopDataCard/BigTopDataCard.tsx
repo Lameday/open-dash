@@ -17,7 +17,7 @@ interface BigTopDataCardProps {
     leftTopButton?: ReactNode;
     rightTopButton?: ReactNode;
     middleValueIcon?: ReactNode;
-    value?: number | string;
+    value?: number | string | ReactNode;
     cardType?: CardType;
 }
 
