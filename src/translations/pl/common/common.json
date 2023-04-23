@@ -1,0 +1,21 @@
+{
+    "common" :{
+        "day": "Dzień",
+        "month": "Miesiąc",
+        "year": "Rok",
+        "value": "Wartość",
+        "january": "Styczeń",
+        "february": "Luty",
+        "march": "Marzec",
+        "april": "Kwiecień",
+        "may": "Maj",
+        "june": "Czerwiec",
+        "july": "Lipiec",
+        "august": "Sierpień",
+        "september": "Wrzesień",
+        "october": "Październik",
+        "november": "Listopad",
+        "december": "Grudzień",
+        "total": "Całkowity"
+    }
+}

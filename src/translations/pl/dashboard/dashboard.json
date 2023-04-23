@@ -1,5 +1,8 @@
 {
   "dashboard": {
-    "title": "dashboard pl"
+    "title": "dashboard pl",
+    "totalIncome": "Całkowity Dochód",
+    "totalEarning": "Całkowity Przychód",
+    "totalOrder": "Suma Zamówień"
   }
 }
