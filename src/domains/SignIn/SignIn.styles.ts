@@ -41,11 +41,11 @@ export const StyledButton = styled(Button)(() => ({
     marginTop: '16px',
 }));
 
-export const StyledErrorMessage = styled(Typography)(() => ({
+export const StyledErrorMessage = styled(Typography)(({ theme }) => ({
     textAlign: 'center',
     marginTop: '20px',
     marginBottom: '20px',
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
 }));
 
 export const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({

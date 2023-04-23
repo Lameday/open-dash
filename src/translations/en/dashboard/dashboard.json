@@ -1,5 +1,8 @@
 {
   "dashboard": {
-    "title": "title"
+    "title": "title",
+    "totalIncome": "Total Income",
+    "totalEarning": "Total Earning",
+    "totalOrder": "Total Order"
   }
 }

@@ -4,72 +4,38 @@ import { SmallTopDataCard } from './components/SmallTopDataCard/SmallTopDataCard
 import { EarningGraph } from './components/EarningGraph/EarningGraph';
 import { OrderButtons } from './components/OrderButtons/OrderButtons';
 import { TableChart, Storefront, Redeem, LocalAtm } from '@mui/icons-material';
-import { MiddleValueIcon, StyledCircularProgress } from './TopDataCards.styles';
+import { MiddleValueIcon } from './TopDataCards.styles';
 import { EarningButton } from './components/EarningButton/EarningButton';
 import { useState } from 'react';
-import { useDashboardValues } from './hooks/useDashboardValues';
+import { useTopDataCardsValues } from './hooks/useTopDataCardsValues';
 import { useTheme } from '@mui/material';
-
-export enum CardType {
-    Order = 'Order',
-    Earning = 'Earning',
-}
-
-export enum DataType {
-    Month = 'Month',
-    Year = 'Year',
-}
-
-enum FetchError {
-    Err = 'Err',
-}
+import { CardType } from './enum/TopDataCards.enum';
+import { DataType } from './enum/TopDataCards.enum';
 
 export const TopDataCards = () => {
     const [dataType, setDataType] = useState(DataType.Month);
-    const { dashboardValues, isLoading, isError, isSuccess } = useDashboardValues(dataType);
+    const { dashboardValues, isError } = useTopDataCardsValues(dataType);
     const theme = useTheme();
 
     return (
         <>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
+                    isError={isError}
                     cardType={CardType.Earning}
                     leftTopButton={<LocalAtm />}
                     rightTopButton={<EarningButton />}
-                    value={
-                        isSuccess ? (
-                            dashboardValues.earningTotal
-                        ) : isLoading ? (
-                            <StyledCircularProgress size={theme.spacing(3.5)} />
-                        ) : isError ? (
-                            FetchError.Err
-                        ) : (
-                            ''
-                        )
-                    }
+                    value={dashboardValues && dashboardValues.earningTotal}
                     middleValueIcon={<MiddleValueIcon rotate='30' iconColor={theme.palette.secondary.dark} />}
                 />
             </Grid>
             <Grid item xs={12} sm={6} lg={4}>
                 <BigTopDataCard
-                    graph={
-                        isSuccess ? (
-                            <EarningGraph array={dashboardValues.orderArray} dataType={dataType} />
-                        ) : isLoading ? null : isError ? null : null
-                    }
+                    isError={isError}
+                    graph={<EarningGraph array={dashboardValues && dashboardValues.orderArray} dataType={dataType} />}
                     leftTopButton={<Redeem />}
                     rightTopButton={<OrderButtons dataType={dataType} setDataType={setDataType} />}
-                    value={
-                        isSuccess ? (
-                            dashboardValues.orderTotal
-                        ) : isLoading ? (
-                            <StyledCircularProgress size={theme.spacing(3.5)} />
-                        ) : isError ? (
-                            FetchError.Err
-                        ) : (
-                            ''
-                        )
-                    }
+                    value={dashboardValues && dashboardValues.orderTotal}
                     middleValueIcon={<MiddleValueIcon rotate='210' iconColor={theme.palette.secondary.main} />}
                     cardType={CardType.Order}
                 />
@@ -77,37 +43,19 @@ export const TopDataCards = () => {
             <Grid container item xs={12} lg={4} spacing={2}>
                 <Grid item xs={12} sm={6} lg={12}>
                     <SmallTopDataCard
+                        isError={isError}
                         buttonIcon={<TableChart />}
                         textcolor={theme.palette.common.white}
-                        value={
-                            isSuccess ? (
-                                dashboardValues.incomeTotal
-                            ) : isLoading ? (
-                                <StyledCircularProgress size={theme.spacing(2.5)} />
-                            ) : isError ? (
-                                FetchError.Err
-                            ) : (
-                                ''
-                            )
-                        }
+                        value={dashboardValues && dashboardValues.incomeTotal}
                         cardType={CardType.Earning}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6} lg={12}>
                     <SmallTopDataCard
+                        isError={isError}
                         buttonIcon={<Storefront />}
                         textcolor={theme.palette.common.white}
-                        value={
-                            isSuccess ? (
-                                dashboardValues.incomeTotal
-                            ) : isLoading ? (
-                                <StyledCircularProgress size={theme.spacing(2.5)} />
-                            ) : isError ? (
-                                FetchError.Err
-                            ) : (
-                                ''
-                            )
-                        }
+                        value={dashboardValues && dashboardValues.incomeTotal}
                         cardType={CardType.Order}
                     />
                 </Grid>

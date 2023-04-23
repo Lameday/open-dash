@@ -15,5 +15,4 @@ export const MiddleValueIcon = styled(ArrowUpward)<IconProps>(({ rotate, iconCol
 
 export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
     color: theme.palette.common.white,
-    size: 30,
 }));

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDashboardValues } from '../helpers/getDashboardValues';
-import { DataType } from '../TopDataCards';
+import { getTopDataCardsValues } from '../helpers/getTopDataCardsValues';
+import { DataType } from '../enum/TopDataCards.enum';
+import { TopDataCardsBackendForm } from '../model/TopDataCards.model';
 
 const dataYear = [
     { name: 'January', investment: 35, order: 35, profit: 35 },
@@ -50,18 +51,14 @@ const dataMonth = [
     { name: '30', investment: 80, order: 4, profit: 105 },
 ];
 
-interface DashboardDataForm {
-    name: string;
-    investment: number;
-    order: number;
-    profit: number;
-}
-
-const fetchDashboardData = async (dataArray: DashboardDataForm[] | undefined): Promise<DashboardDataForm[]> => {
+const fetchTopDataCardsData = async (dataType: DataType | undefined): Promise<TopDataCardsBackendForm[]> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (dataArray) {
-                resolve(dataArray);
+            if (dataType === DataType.Month) {
+                resolve(dataYear);
+            }
+            if (dataType === DataType.Year) {
+                resolve(dataMonth);
             } else {
                 reject(new Error('Error during fetch data'));
             }
@@ -69,20 +66,12 @@ const fetchDashboardData = async (dataArray: DashboardDataForm[] | undefined): P
     });
 };
 
-export const useDashboardValues = (dataType: DataType) => {
-    const { data, isError, isLoading, isSuccess } = useQuery({
+export const useTopDataCardsValues = (dataType: DataType) => {
+    const { data, isError } = useQuery({
         queryKey: [`dashboardData${dataType}`],
-        queryFn: () =>
-            fetchDashboardData(
-                dataType === DataType.Month ? dataMonth : dataType === DataType.Year ? dataYear : undefined,
-            ),
+        queryFn: () => fetchTopDataCardsData(dataType),
     });
 
-    if (isSuccess) {
-        const dashboardValues = getDashboardValues(data);
-        console.log(data);
-        return { dashboardValues, isError, isLoading, isSuccess };
-    }
-
-    return { isError, isLoading, isSuccess };
+    const dashboardValues = getTopDataCardsValues(data);
+    return { dashboardValues, isError };
 };

@@ -1,21 +1,15 @@
 import { styled } from '@mui/material/styles';
-import { Typography, Grid, Avatar } from '@mui/material';
+import { Typography, Grid, Avatar, CircularProgress } from '@mui/material';
 import { DashboardCardPaper } from '../../../DashboardCard/DashboardCardPaper.styles';
 
 type StyledProps = {
-    cardType?: string;
+    cardType: string;
 };
 
 export const StyledPaper = styled(DashboardCardPaper)<StyledProps>(({ theme, cardType }) => ({
     boxSizing: 'border-box',
     height: '100%',
-    minHeight: theme.spacing(15),
-    backgroundColor:
-        cardType === 'Order'
-            ? theme.palette.primary.main
-            : cardType === 'Earning'
-            ? theme.palette.secondary.main
-            : theme.palette.common.black,
+    backgroundColor: cardType === 'Order' ? theme.palette.primary.main : theme.palette.secondary.main,
     padding: theme.spacing(1.5),
 }));
 
@@ -25,12 +19,7 @@ export const TopCardGrid = styled(Grid)(() => ({
 
 export const TopLeftButtonOutline = styled(Avatar)<StyledProps>(({ theme, cardType }) => ({
     marginTop: theme.spacing(1),
-    backgroundColor:
-        cardType === 'Order'
-            ? theme.palette.primary.dark
-            : cardType === 'Earning'
-            ? theme.palette.secondary.dark
-            : theme.palette.common.black,
+    backgroundColor: cardType === 'Order' ? theme.palette.primary.dark : theme.palette.secondary.dark,
 }));
 
 export const MiddleValuesGrid = styled(Grid)(({ theme }) => ({
@@ -39,7 +28,7 @@ export const MiddleValuesGrid = styled(Grid)(({ theme }) => ({
 }));
 
 export const MiddleValueTypography = styled(Typography)(({ theme }) => ({
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     marginRight: theme.spacing(0.5),
     color: theme.palette.common.white,
 }));
@@ -51,15 +40,19 @@ export const MiddleValueIconOutline = styled(Avatar)(({ theme }) => ({
 }));
 
 export const MiddleValueDownTypography = styled(Typography)<StyledProps>(({ theme, cardType }) => ({
-    fontWeight: 'bold',
-    color:
-        cardType === 'Order'
-            ? theme.palette.primary.light
-            : cardType === 'Earning'
-            ? theme.palette.secondary.light
-            : theme.palette.common.black,
+    fontWeight: theme.typography.fontWeightBold,
+    color: cardType === 'Order' ? theme.palette.primary.light : theme.palette.secondary.light,
 }));
 
 export const MiddleGraphContainer = styled(Grid)(() => ({
     alignItems: 'center',
+}));
+
+export const StyledLoadingBackground = styled(StyledPaper)(() => ({
+    display: 'flex',
+    justifyContent: 'center',
+}));
+
+export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
+    color: theme.palette.common.white,
 }));

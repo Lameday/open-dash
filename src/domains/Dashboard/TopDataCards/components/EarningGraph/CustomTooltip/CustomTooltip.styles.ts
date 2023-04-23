@@ -1,17 +1,16 @@
 import { Paper, Typography } from '@mui/material';
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 
-export const CustomTooltipPaper = styled(Paper)(() => ({
+export const CustomTooltipPaper = styled(Paper)(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'black',
-    width: '150px',
+    backgroundColor: theme.palette.common.black,
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
 }));
 
-export const CustomTooltipText = styled(Typography)(() => ({
-    color: 'white',
-    fontWeight: 'bold',
+export const CustomTooltipText = styled(Typography)(({ theme }) => ({
+    color: theme.palette.common.white,
+    fontWeight: theme.typography.fontWeightBold,
 }));

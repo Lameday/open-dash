@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Grid } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import {
     StyledPaper,
     TopCardGrid,
@@ -9,16 +10,19 @@ import {
     MiddleValueIconOutline,
     MiddleGraphContainer,
     MiddleValueDownTypography,
+    StyledCircularProgress,
+    StyledLoadingBackground,
 } from './BigTopDataCard.styles';
-import { CardType } from '../../TopDataCards';
+import { CardType } from '../../enum/TopDataCards.enum';
 
 interface BigTopDataCardProps {
     graph?: ReactNode;
     leftTopButton?: ReactNode;
     rightTopButton?: ReactNode;
     middleValueIcon?: ReactNode;
-    value?: number | string | ReactNode;
-    cardType?: CardType;
+    value: number | string | null;
+    cardType: CardType;
+    isError: boolean;
 }
 
 export const BigTopDataCard: FC<BigTopDataCardProps> = ({
@@ -28,7 +32,22 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
     middleValueIcon,
     value,
     cardType,
+    isError,
 }) => {
+    const { t } = useTranslation();
+
+    if (isError) {
+        value = '-';
+    }
+
+    if (value === null) {
+        return (
+            <StyledLoadingBackground cardType={cardType} elevation={0}>
+                <StyledCircularProgress size={128} />
+            </StyledLoadingBackground>
+        );
+    }
+
     return (
         <StyledPaper cardType={cardType} elevation={0}>
             <Grid container>
@@ -48,7 +67,7 @@ export const BigTopDataCard: FC<BigTopDataCardProps> = ({
                         </Grid>
                         <Grid container item>
                             <MiddleValueDownTypography variant='body1' cardType={cardType}>
-                                Total {cardType}
+                                {t(`dashboard.total${cardType}`)}
                             </MiddleValueDownTypography>
                         </Grid>
                     </MiddleValuesGrid>

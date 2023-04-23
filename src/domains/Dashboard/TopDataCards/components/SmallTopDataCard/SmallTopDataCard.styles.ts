@@ -1,16 +1,12 @@
 import { styled } from '@mui/material/styles';
-import { Avatar, Grid, Paper, Typography } from '@mui/material';
-
-interface ButtonOutlineProps {
-    outlinebgcolor?: string;
-}
+import { Avatar, Grid, Paper, Typography, CircularProgress } from '@mui/material';
 
 interface TextProps {
     textcolor?: string;
 }
 
 type StyledProps = {
-    cardType?: string;
+    cardType: string;
 };
 
 export const StyledPaper = styled(Paper)<StyledProps>(({ theme, cardType }) => ({
@@ -18,14 +14,7 @@ export const StyledPaper = styled(Paper)<StyledProps>(({ theme, cardType }) => (
     justifyContent: 'center',
     alignItems: 'center',
     boxSizing: 'border-box',
-    height: '100%',
-    minHeight: theme.spacing(9),
-    backgroundColor:
-        cardType === 'Order'
-            ? theme.palette.primary.main
-            : cardType === 'Earning'
-            ? theme.palette.secondary.main
-            : theme.palette.common.black,
+    backgroundColor: cardType === 'Order' ? theme.palette.primary.main : theme.palette.secondary.main,
     padding: theme.spacing(1),
 }));
 
@@ -43,20 +32,24 @@ export const ButtonContainer = styled(Grid)(({ theme }) => ({
 }));
 
 export const ButtonOutline = styled(Avatar)<StyledProps>(({ theme, cardType }) => ({
-    backgroundColor:
-        cardType === 'Order'
-            ? theme.palette.primary.dark
-            : cardType === 'Earning'
-            ? theme.palette.secondary.dark
-            : theme.palette.common.black,
+    backgroundColor: cardType === 'Order' ? theme.palette.primary.dark : theme.palette.secondary.dark,
     cursor: 'pointer',
 }));
 
-export const UpperText = styled(Typography)<TextProps>(({ textcolor }) => ({
-    fontWeight: 'bold',
+export const UpperText = styled(Typography)<TextProps>(({ theme, textcolor }) => ({
+    fontWeight: theme.typography.fontWeightBold,
     color: textcolor,
 }));
 
 export const LowerText = styled(Typography)<TextProps>(({ textcolor }) => ({
     color: textcolor,
+}));
+
+export const StyledLoadingBackground = styled(StyledPaper)(() => ({
+    display: 'flex',
+    justifyContent: 'center',
+}));
+
+export const StyledCircularProgress = styled(CircularProgress)(({ theme }) => ({
+    color: theme.palette.common.white,
 }));
