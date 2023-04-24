@@ -1,5 +1,22 @@
 {
   "dashboard": {
-    "title": "dashboard pl"
+    "title": "dashboard pl",
+    "chart": {
+      "title": "Całkowity Wzrost",
+      "investment": "Inwestycje",
+      "loss": "Straty",
+      "profit": "Zysk",
+      "maintenance": "Koszt Utrzymania",
+      "menu": {
+        "today": "Dzisiaj",
+        "thisMonth": "Ten Miesiąc",
+        "thisYear": "Ten Rok"
+      },
+      "download": {
+        "png": "Pobierz PNG",
+        "svg": "Pobierz SVG",
+        "csv": "Pobierz CSV"
+      }
+    }
   }
 }

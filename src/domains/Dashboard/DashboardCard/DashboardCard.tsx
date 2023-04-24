@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { DashboardCardPaper } from './DashboardCardPaper.styles';
+import { DashboardCardPaper } from './DashboardCard.styles';
 
 interface DashboardCardProps {
     children?: ReactNode;
