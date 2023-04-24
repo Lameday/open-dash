@@ -22,7 +22,7 @@ const resources = {
     pl: {
         translation: {
             ...dashboardTranslationsPL,
-            ...noAuthTranslations,
+            ...noAuthTranslationsPL,
             ...moduleOneTranslationsPL,
         },
     },

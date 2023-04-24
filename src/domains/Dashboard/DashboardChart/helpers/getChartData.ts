@@ -1,6 +1,6 @@
 //Mock data because of lack of API
 
-import { ChartData } from '../model/ChartData';
+import { ChartData } from '../../../../shared/components/Chart/model/ChartData';
 
 const dataToday = [
     { name: 1, investment: 106, loss: 317, profit: 344, maintenance: 310 },

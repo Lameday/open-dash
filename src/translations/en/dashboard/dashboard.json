@@ -11,6 +11,11 @@
         "today": "Today",
         "thisMonth": "This Month",
         "thisYear": "This Year"
+      },
+      "download": {
+        "png": "Download PNG",
+        "svg": "Download SVG",
+        "csv": "Download CSV"
       }
     }
   }
