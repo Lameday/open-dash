@@ -3,16 +3,16 @@ import { Line, LineChart, ResponsiveContainer, Tooltip } from 'recharts';
 import { CustomTooltip } from './CustomTooltip/CustomTooltip';
 import { DataType } from '../../enum/TopDataCards.enum';
 import { useTheme } from '@mui/material';
+import { OrderObject } from '../../model/TopDataCards.model';
 
-interface OrderArray {
-    name: string;
-    order: number;
+interface EarningGraphProps {
+    array?: OrderObject[] | null;
+    dataType: DataType;
 }
 
-export const EarningGraph: FC<{ array: OrderArray[] | null; dataType: DataType }> = ({ array, dataType }) => {
+export const EarningGraph: FC<EarningGraphProps> = ({ array, dataType }) => {
     const theme = useTheme();
-
-    if (array === null) {
+    if (array === null || array == undefined) {
         return null;
     }
 

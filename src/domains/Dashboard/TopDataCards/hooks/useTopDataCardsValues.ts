@@ -55,10 +55,10 @@ const fetchTopDataCardsData = async (dataType: DataType | undefined): Promise<To
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (dataType === DataType.Month) {
-                resolve(dataYear);
+                resolve(dataMonth);
             }
             if (dataType === DataType.Year) {
-                resolve(dataMonth);
+                resolve(dataYear);
             } else {
                 reject(new Error('Error during fetch data'));
             }

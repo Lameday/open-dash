@@ -45,7 +45,7 @@ export const TopDataCards = () => {
                     <SmallTopDataCard
                         isError={isError}
                         buttonIcon={<TableChart />}
-                        textcolor={theme.palette.common.white}
+                        textColor={theme.palette.common.white}
                         value={dashboardValues && dashboardValues.incomeTotal}
                         cardType={CardType.Earning}
                     />
@@ -54,7 +54,7 @@ export const TopDataCards = () => {
                     <SmallTopDataCard
                         isError={isError}
                         buttonIcon={<Storefront />}
-                        textcolor={theme.palette.common.white}
+                        textColor={theme.palette.common.white}
                         value={dashboardValues && dashboardValues.incomeTotal}
                         cardType={CardType.Order}
                     />

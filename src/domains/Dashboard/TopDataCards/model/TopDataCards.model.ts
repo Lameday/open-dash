@@ -5,7 +5,7 @@ export interface TopDataCardsBackendForm {
     profit: number;
 }
 
-interface OrderObject {
+export interface OrderObject {
     name: string;
     order: number;
 }

@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import { Avatar, Grid, Paper, Typography, CircularProgress } from '@mui/material';
 
 interface TextProps {
-    textcolor?: string;
+    textColor?: string;
 }
 
 type StyledProps = {
@@ -36,13 +36,13 @@ export const ButtonOutline = styled(Avatar)<StyledProps>(({ theme, cardType }) =
     cursor: 'pointer',
 }));
 
-export const UpperText = styled(Typography)<TextProps>(({ theme, textcolor }) => ({
+export const UpperText = styled(Typography)<TextProps>(({ theme, textColor }) => ({
     fontWeight: theme.typography.fontWeightBold,
-    color: textcolor,
+    color: textColor,
 }));
 
-export const LowerText = styled(Typography)<TextProps>(({ textcolor }) => ({
-    color: textcolor,
+export const LowerText = styled(Typography)<TextProps>(({ textColor }) => ({
+    color: textColor,
 }));
 
 export const StyledLoadingBackground = styled(StyledPaper)(() => ({

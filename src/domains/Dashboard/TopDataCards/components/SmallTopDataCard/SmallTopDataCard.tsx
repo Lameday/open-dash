@@ -14,13 +14,13 @@ import {
 
 interface SmallTopDataCardProps {
     buttonIcon?: ReactNode;
-    textcolor?: string;
+    textColor?: string;
     value?: number | string | null;
     cardType: string;
     isError: boolean;
 }
 
-export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({ buttonIcon, textcolor, value, cardType, isError }) => {
+export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({ buttonIcon, textColor, value, cardType, isError }) => {
     const { t } = useTranslation();
 
     if (isError) {
@@ -45,12 +45,12 @@ export const SmallTopDataCard: FC<SmallTopDataCardProps> = ({ buttonIcon, textco
                 </ButtonContainer>
                 <Grid item>
                     <Grid item container xs={12}>
-                        <UpperText variant='body1' textcolor={textcolor}>
+                        <UpperText variant='body1' textColor={textColor}>
                             ${value}
                         </UpperText>
                     </Grid>
                     <Grid xs={12} item container>
-                        <LowerText variant='body1' textcolor={textcolor}>
+                        <LowerText variant='body1' textColor={textColor}>
                             {t('dashboard.totalIncome')}
                         </LowerText>
                     </Grid>
